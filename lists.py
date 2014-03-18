@@ -19,3 +19,10 @@ class Lists():
                     if user.email == email:
                         return True
         return False
+
+    def search_by_mail(self, email):
+        l = []
+        for userlist in self.lists:
+            if self.is_add(email, userlist.list_name):
+                l.append(userlist.list_name)
+        return l
