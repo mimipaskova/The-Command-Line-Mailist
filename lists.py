@@ -35,3 +35,20 @@ class Lists():
                 for user in userlist.list_of_users:
                     dictionary[user.name] = user.email
         return dictionary
+
+
+    def remove_from_list(self, listname, user):
+        for userlist in self.lists:
+            if userlist.list_name == listname:
+                if self.is_add(user.email, listname):
+                    userlist.list_of_users.remove(user)
+                    return True
+        return False
+
+
+
+
+
+
+
+
