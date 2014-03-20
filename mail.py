@@ -21,7 +21,7 @@ def show_lists(lists):
         print("[%d] %s"%(i + 1, lists[i].list_name)
 
 def show_list(list_of_users):
-    for i in range(len(list_of_users)):lass Lists():
+    for i in range(len(list_of_users)):
         print("[%d] %s - %s"% (i + 1, list_of_users[i].name, list_of_users[i].email))
 
 def add_subscriber(lists, listname):
@@ -40,6 +40,8 @@ def export(dictionary, filename):
     file = open(filename + ".json", "w")
     file.write(dumps(dictionary))
     file.close()
+
+
 
 def main():
     print("Hello Stranger! This is a cutting-edge, console-based mail-list!\n" +
