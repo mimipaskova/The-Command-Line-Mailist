@@ -45,6 +45,10 @@ class Lists():
                     return True
         return False
 
+    #def update_user(self,listname, user):
+
+
+
 
 
 
