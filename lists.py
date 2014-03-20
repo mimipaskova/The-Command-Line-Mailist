@@ -34,5 +34,4 @@ class Lists():
             if userlist.list_name == listname:
                 for user in userlist.list_of_users:
                     dictionary[user.name] = user.email
-
-        f = open(filename, "w")
+        return dictionary
