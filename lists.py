@@ -1,4 +1,5 @@
 from user_list import User_list
+import json
 
 class Lists():
     def __init__(self):
@@ -26,3 +27,12 @@ class Lists():
             if self.is_add(email, userlist.list_name):
                 l.append(userlist.list_name)
         return l
+
+    def export_into_json(self, listname, filename):
+        dictionary = {}
+        for userlist in self.lists:
+            if userlist.list_name == listname:
+                for user in userlist.list_of_users:
+                    dictionary[user.name] = user.email
+
+        f = open(filename, "w")
