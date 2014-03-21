@@ -45,7 +45,14 @@ class Lists():
                     return True
         return False
 
-    #def update_user(self,listname, user):
+    def update_user(self,listname, user):
+        for userlist in self.lists:
+            if userlist.list_name == listname:
+                if self.is_add(user.email, listname):
+                    userlist.list_of_users.remove(user)
+                    self.add(user,listname)
+                    return True
+        return False
 
 
 
