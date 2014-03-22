@@ -1,8 +1,9 @@
 from user import User
+from lists import Lists
 from json import dumps
 from json import loads
 
-def help():
+def help():#OK
     print("Here is a full list of commands:")
     print("* show_lists - Prints all lists to the screen. Each list is assigned with a unique identifier")
     print("* show_list <unique_list_identifier> - Prints all people, one person at a line, that are subscribed for the list. The format is: <Name> - <Email>")
@@ -18,11 +19,11 @@ def help():
 
 def show_lists(lists):
     for i in range(len(lists)):
-        print("[%d] %s"%(i + 1, lists[i].list_name)
+        print("[%d] %s" % (i + 1, lists[i].list_name))
 
 def show_list(list_of_users):
     for i in range(len(list_of_users)):
-        print("[%d] %s - %s"% (i + 1, list_of_users[i].name, list_of_users[i].email))
+        print("[%d] %s - %s" % (i + 1, list_of_users[i].name, list_of_users[i].email))
 
 def add_subscriber(lists, listname):
     name = input("name>")
@@ -41,17 +42,24 @@ def export(dictionary, filename):
     file.write(dumps(dictionary))
     file.close()
 
+def split_command(command):
+    return command.split(" ")
 
+def show_list_by_num(lists, number):
 
 def main():
+    lists = Lists()
     print("Hello Stranger! This is a cutting-edge, console-based mail-list!\n" +
         "Type help, to see a list of commands.\n")
-
     while True:
         command = input(">")
-        if command == "help":
-            help()
+        com = split_command(command)
 
+        if com[0] == "help":
+            help()
+        elif com[0] == "show_lists"
+            show_list(lists)
+        elif com[0] == "show_list":
 
 
 if __name__ == '__main__':
