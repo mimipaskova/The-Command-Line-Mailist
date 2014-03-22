@@ -10,12 +10,22 @@ class MailListTest(unittest.TestCase):
     def test_get_listname(self):
         self.assertEqual("Programming with Java", self.mail.get_name())
 
+    def test_set_name(self):
+        self.mail.set_name("java")
+        self.assertEqual(self.mail.get_name(),"java")
+
     def test_add_subscriber(self):
         self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
         self.mail.add_subscriber("Ivan Ivanov", "ivanivanov@gmail.com")
         self.assertEqual(self.mail.count_of_subscribers(), 2)
         self.mail.add_subscriber("Dimo Dimov", "dimodimov@mail.com")
         self.assertEqual(self.mail.count_of_subscribers(), 3)
+
+    def test_get_subscribers(self):
+        self.mail.add_subscriber("Maria Paskova", "maria@maria")
+        self.assertEqual(self.mail.get_subscibers(),{"Maria Paskova": "maria@maria"})
+        self.mail.add_subscriber("gosho", "gosho@gosho")
+        self.assertEqual(self.mail.get_subscibers(),{"Maria Paskova": "maria@maria", "gosho": "gosho@gosho" })
 
     def test_is_add(self):
         self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
