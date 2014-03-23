@@ -90,7 +90,7 @@ def search_email(lists, email):
     return where
 
 def merge_lists(list1, list2, new_list):
-    new_content = list1.merge_lists(list2.get_subscibers())
+    new_content = list1.merge_lists(list2.get_subscribers())
     for key in new_content:
         new_list.add_subscriber(key, new_content[key])
 

@@ -23,9 +23,23 @@ class MailListTest(unittest.TestCase):
 
     def test_get_subscribers(self):
         self.mail.add_subscriber("Maria Paskova", "maria@maria")
-        self.assertEqual(self.mail.get_subscibers(),{"Maria Paskova": "maria@maria"})
+        self.assertEqual(self.mail.get_subscribers(),{"Maria Paskova": "maria@maria"})
         self.mail.add_subscriber("gosho", "gosho@gosho")
-        self.assertEqual(self.mail.get_subscibers(),{"Maria Paskova": "maria@maria", "gosho": "gosho@gosho" })
+        self.assertEqual(self.mail.get_subscribers(),{"Maria Paskova": "maria@maria", "gosho": "gosho@gosho" })
+
+    def test_count_of_subscribers(self):
+        self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
+        self.mail.add_subscriber("Ivan Ivanov", "ivanivanov@gmail.com")
+        self.mail.add_subscriber("Maria Paskova", "maria@maria")
+        self.mail.add_subscriber("gosho", "gosho@gosho")
+        self.assertEqual(self.mail.count_of_subscribers(),4)
+
+    def test_list_of_subscribers(self):
+        self.mail.add_subscriber("Ivan Ivanov", "ivanivanov@gmail.com")
+        #self.mail.add_subscriber("Maria Paskova", "maria@maria")
+        self.assertEqual(self.mail.list_of_subscribers(), [("Ivan Ivanov","ivanivanov@gmail.com")
+            #, ("Maria Paskova", "maria@maria")
+            ])
 
     def test_is_add(self):
         self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
@@ -42,6 +56,21 @@ class MailListTest(unittest.TestCase):
 
         self.mail.remove_subscriber("kristiyankisimov")
         self.assertEqual(False, self.mail.is_add("kristiyankisimov"))
+
+    def test_merge_lists(self):
+        self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
+        self.mail.add_subscriber("Ivan Ivanov", "ivanivanov@gmail")
+        self.mail2.add_subscriber("Maria Paskova", "maria@maria")
+        self.mail2.add_subscriber("Ivan", "ivanov@gmail")
+        self.assertEqual(self.mail.merge_lists(self.mail2.get_subscribers()),{
+            "Maria Paskova": "maria@maria","Ivan Ivanov": "ivanivanov@gmail", "Kristiyan Kisimov": "kristiyankisimov@yahoo", "Ivan": "ivanov@gmail" })
+
+
+    def test_update_subscriber(self):
+        self.mail.add_subscriber("Kristiyan Kisimov", "kristiyankisimov@yahoo")
+        self.mail.add_subscriber("Ivan Ivanov", "ivanivanov@gmail")
+        self.mail.update_subscriber("Ivan Ivanov", "Ivan","ivanivanov@gmail")
+        self.assertEqual(self.mail.get_subscribers(), {"Kristiyan Kisimov": "kristiyankisimov@yahoo","Ivan":"ivanivanov@gmail"})
 
     def tearDown(self):
         pass

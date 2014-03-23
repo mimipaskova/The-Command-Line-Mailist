@@ -12,7 +12,7 @@ class MailList():
     def set_name(self, new_name):
         self.__name = new_name
 
-    def get_subscibers(self):
+    def get_subscribers(self):
         return self.__subscribers
 
     def count_of_subscribers(self):
